@@ -18,15 +18,41 @@ class Hello extends Component {
   }
 }
 
+class Text extends Component {
+  render() {
+    const textoSegunBool = this.props.isActivated ? 'On' : 'Off';
+    const mappedNumbers = this.props.arrayOfNumbers.map(n => n * 2);
+
+    return (
+      <div>
+        <p>
+        Edit <code>src/App.js</code>. {this.props.text}.
+        </p>
+        <p>{this.props.number}</p>
+        <p>{textoSegunBool}</p>
+        <p>{this.props.arrayOfNumbers}</p>
+        <p>{this.props.arrayOfNumbers.join(', ')}</p>
+        <p>{mappedNumbers.join(', ')}</p>
+        <p>{this.props.objetWithInfo.key}</p>
+
+      </div>
+    );
+  }
+}
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Hello title="Hello from props"/>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Text //estos elementos se ordenan alfabeticamene, se colocan así si son muchos.
+          arrayOfNumbers={[2, 3, 10]}
+          objetWithInfo={{ key: 'First value', key2: 'Other value' }}
+          isActivated
+          number={2}
+          text="Texto en string"
+        />
         <a
           className="App-link"
           href="https://reactjs.org"
