@@ -66,9 +66,13 @@ Title.defaultProps = {
 
 //en class Contador vamos a utilizar el state. Para ello hay que utilizar el constructor
 class Contador extends Component {
-  constructor () {
-    super() //el metodo super ejecuta el metodo constructor de la clase que extendemos, Component
-    this.state = { contador : 1}
+  constructor (props) {
+    super(props) //el metodo super ejecuta el metodo constructor de la clase que extendemos, Component
+    this.state = { contador : this.props.contadorInicial}
+
+    setInterval(() => {
+      this.setState({contador : this.state.contador + 1})
+    }, 1000);
   }
   render() {
     //const contador = 0;
@@ -103,7 +107,7 @@ function App() {
         </a>
       </header>
       <p>Primer componente con state</p>
-      <Contador />
+      <Contador contadorInicial={100}/>
     </div>
   );
 }
