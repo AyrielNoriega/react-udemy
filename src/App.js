@@ -54,12 +54,24 @@ class Text extends Component {
   }
 }
 
+class Title extends Component {
+  render() {
+    return <h1>{this.props.text}</h1>
+  }
+}
+//asi se puede definir valores por defecto para un props
+Title.defaultProps = {
+  text: 'Aqui va el titulo'
+}
+
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Hello title="Hello from props"/>
+        <Title />
         <Text //estos elementos se ordenan alfabeticamene, se colocan así si son muchos.
           arrayOfNumbers={[2, 3, 10]}
           objetWithInfo={{ key: 'First value', key2: 'Other value' }}
