@@ -20,20 +20,34 @@ class Hello extends Component {
 
 class Text extends Component {
   render() {
-    const textoSegunBool = this.props.isActivated ? 'On' : 'Off';
-    const mappedNumbers = this.props.arrayOfNumbers.map(n => n * 2);
+    //hacemos destructuracion para acceder mejor a las propiedades. Por lo general se coloca en la primera línea del render()
+    //tabien lo podemos ordenar asi:
+    const {
+      isActivated,
+      arrayOfNumbers,
+      multiply,
+      objetWithInfo,
+      number,
+      title
+    } = this.props
+    const textoSegunBool = isActivated ? 'On' : 'Off';
+    const mappedNumbers = arrayOfNumbers.map(n => n * 2);
+    const mappedNumbersMultiply = arrayOfNumbers.map(multiply);
 
     return (
       <div>
+        {title}
         <p>
         Edit <code>src/App.js</code>. {this.props.text}.
         </p>
-        <p>{this.props.number}</p>
+        <p>{number}</p>
         <p>{textoSegunBool}</p>
-        <p>{this.props.arrayOfNumbers}</p>
-        <p>{this.props.arrayOfNumbers.join(', ')}</p>
+        <p>{arrayOfNumbers}</p>
+        <p>{arrayOfNumbers.join(', ')}</p>
         <p>{mappedNumbers.join(', ')}</p>
-        <p>{this.props.objetWithInfo.key}</p>
+        <p>{objetWithInfo.key}</p>
+        <p>{mappedNumbersMultiply.join(', ')}</p>
+
 
       </div>
     );
@@ -50,8 +64,10 @@ function App() {
           arrayOfNumbers={[2, 3, 10]}
           objetWithInfo={{ key: 'First value', key2: 'Other value' }}
           isActivated
+          multiply={(number) => number * 4}
           number={2}
           text="Texto en string"
+          title={<h1>Este es un h1</h1>}
         />
         <a
           className="App-link"
