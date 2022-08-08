@@ -64,6 +64,18 @@ Title.defaultProps = {
   text: 'Aqui va el titulo'
 }
 
+//en class Contador vamos a utilizar el state. Para ello hay que utilizar el constructor
+class Contador extends Component {
+  constructor () {
+    super() //el metodo super ejecuta el metodo constructor de la clase que extendemos, Component
+    this.state = { contador : 1}
+  }
+  render() {
+    //const contador = 0;
+    return <span>{this.state.contador}</span>
+  }
+}
+
 
 function App() {
   return (
@@ -90,6 +102,8 @@ function App() {
           Learn React
         </a>
       </header>
+      <p>Primer componente con state</p>
+      <Contador />
     </div>
   );
 }
